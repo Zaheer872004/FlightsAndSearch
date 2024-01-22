@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {PORT} = require('./config/serverConfig');
 const { City } = require('./models/index');
-
+const CityRepo = require('./repository/city-repository');
 
 const setupAndStartServer = async () =>{
     // creating the express object.
@@ -16,6 +16,8 @@ const setupAndStartServer = async () =>{
     //    await City.create({
     //         name:"New Delhi", 
     //     })
+        const Respo = new CityRepo();
+        Respo.createCity({name:"New Delhi"}); 
     })
     
 }
