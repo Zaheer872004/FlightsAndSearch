@@ -19,11 +19,16 @@ class CityRepository{
     }
 
     async deleteCity(cityId){
+        // if(cityId === undefined){
+        //     console.log("id is undefined");
+        //     return false;
+        // }
+
         try {
             await City.destroy({
-                where : {
+                where: {
                     id : cityId,
-                }
+                },
             });
             return true;
         } catch (error) {
