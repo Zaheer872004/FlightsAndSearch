@@ -1,4 +1,4 @@
-'use stric t';
+'use strict';
 const {
   Model
 } = require('sequelize');
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.City, {
+      Airport.belongsTo(models.City, {
         foreignKey : 'cityId',
         onDelete : 'CASCADE' 
      });
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     address: DataTypes.STRING,
     cityId: {
-      type:DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
