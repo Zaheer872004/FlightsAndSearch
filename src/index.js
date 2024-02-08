@@ -22,7 +22,8 @@ const setupAndStartServer = async () => {
 
     app.listen(PORT,async () => {
         console.log(`Server started at ${PORT}.`);
-        
+    {
+        // In this scope one practice of try.
         // const airports = await Airport.findAll({
         //     include : City,
         // });
@@ -37,16 +38,15 @@ const setupAndStartServer = async () => {
         // console.log(result,ans);
 
         // db.sequelize.sync({alter:true});
-
+    }
+        // db.sequelize.sync({alter:true});
         const city = await City.findOne({
             where: {
                 id: 8
             }
-        
         });
         const airports = await city.getAirports();
         // console.log(airports);
-        
         console.log(city,airports);
 
     });

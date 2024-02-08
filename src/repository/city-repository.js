@@ -43,6 +43,7 @@ class CityRepository{
 
     async updateCity(cityId,data){
         try {
+            // not able to get response like createAt and updatedAt
             // const city = await City.update(data, {
             //     where:{
             //         id:cityId
@@ -50,6 +51,7 @@ class CityRepository{
             // });
             // return city;
 
+            // below one in return hole json object
             const city = await City.findByPk(cityId);
             city.name = data.name ;
             await city.save();
