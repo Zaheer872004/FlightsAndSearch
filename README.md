@@ -1,4 +1,4 @@
-
+https://github.com/sequelize/cli/blob/main/docs/FAQ.md
 // 
 
 

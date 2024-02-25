@@ -24,10 +24,12 @@ const setupAndStartServer = async () => {
 
     app.listen(PORT,async () => {
         console.log(`Server started at ${PORT}.`);
-    {
         if(process.env.SYNC_DB){
             db.sequelize.sync({alter: true});
         }
+    
+        
+        
         // In this scope one practice of try.
         // const airports = await Airport.findAll({
         //     include : City,
@@ -43,7 +45,7 @@ const setupAndStartServer = async () => {
         // console.log(result,ans);
 
         // db.sequelize.sync({alter:true});
-    }
+    
         // db.sequelize.sync({alter:true});
         // const city = await City.findOne({
         //     where: {
@@ -57,9 +59,10 @@ const setupAndStartServer = async () => {
         /*# for Airplane creating
         
         */
-       await Airplane.create({
-        modelNumber : 'Bombardier CRJ'
-       });
+    //    await Airplane.create({
+    //     modelNumber : 'Bombardier CRJ'
+    //    });
+       // in here it not require to pass capacity and Created and updated At 
 
     });
 };
