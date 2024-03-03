@@ -1,5 +1,5 @@
 const {AirplaneRepository,FlightRepository} = require('../repository/index');
-
+const {compareTime} = require('../utils/helper');
 
 class FlightService{
     constructor() {
@@ -9,9 +9,13 @@ class FlightService{
 
     async createFlight(data){
         try {
+            if(!compareTime(data.arrivalTime,data.departureTime)){
+                throw {error : "Arrival time not be less than departure time "};
+            }
+
             const airplane = await this.airplaneRepository.getAirplane(data.airplaneId);
             const flight = await this.flightRepository.createFlight({
-                ...data, totalSeats:airplane.capacity
+                ...data, totalSeats:airplane.capacity // here spread of array works
             });
             return flight;
         } catch (error) {
