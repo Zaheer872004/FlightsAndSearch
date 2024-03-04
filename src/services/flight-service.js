@@ -2,10 +2,10 @@ const {AirplaneRepository,FlightRepository} = require('../repository/index');
 const {compareTime} = require('../utils/helper');
 
 class FlightService{
-    constructor() {
-        this.airplaneRepository = new AirplaneRepository();
-        this.flightRepository = new FlightRepository();
-    }
+constructor() {
+    this.airplaneRepository = new AirplaneRepository();
+    this.flightRepository = new FlightRepository();
+}
 
     async createFlight(data){
         try {
@@ -18,6 +18,26 @@ class FlightService{
                 ...data, totalSeats:airplane.capacity // here spread of array works
             });
             return flight;
+        } catch (error) {
+            console.log("Something went wrong in flight service layer");
+            throw {error};
+        }
+    }
+
+    async getFlight(flightId){
+        try { 
+            const flights = await this.flightRepository.getFlight(flightId);  
+            return flights; 
+        } catch (error) {
+            console.log("Something went wrong at service layer");
+            throw {error};
+        }
+    }
+
+    async getAllFlightData(data){
+        try {
+            const flights = await this.flightRepository.getAllFlight(data);
+            return flights;
         } catch (error) {
             console.log("Something went wrong in flight service layer");
             throw {error};
