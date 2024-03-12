@@ -1,0 +1,3 @@
+const clientErrors = Object.freeze(
+     
+)
